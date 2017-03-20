@@ -9,6 +9,7 @@ TARGET_PROGS += max3test
 TARGET_PROGS += stack4test 
 TARGET_PROGS += stack5test 
 TARGET_PROGS += stack7test 
+TARGET_PROGS += stack8test 
 
 INCDIRS =
 INCDIRS += .
@@ -23,6 +24,7 @@ STACK3_SRCS += stack3test.cpp
 STACK4_SRCS += stack4test.cpp
 STACK5_SRCS += stack5test.cpp
 STACK7_SRCS += stack7test.cpp
+STACK8_SRCS += stack8test.cpp
 MAX_SRCS += maxtest.cpp
 MAX3_SRCS += max3test.cpp
 
@@ -31,6 +33,7 @@ SRCS_stack3test = $(STACK3_SRCS)
 SRCS_stack4test = $(STACK4_SRCS)
 SRCS_stack5test = $(STACK5_SRCS)
 SRCS_stack7test = $(STACK7_SRCS)
+SRCS_stack8test = $(STACK8_SRCS)
 SRCS_maxtest = $(MAX_SRCS)
 SRCS_max3test = $(MAX3_SRCS)
 
