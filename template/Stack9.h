@@ -14,7 +14,6 @@ template <typename T>
 class Stack
 {
 public:
-   Stack();
    void push(T const&);
    void pop();
    T top() const;
