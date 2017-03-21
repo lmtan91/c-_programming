@@ -10,6 +10,7 @@ TARGET_PROGS += stack4test
 TARGET_PROGS += stack5test 
 TARGET_PROGS += stack7test 
 TARGET_PROGS += stack8test 
+TARGET_PROGS += refnonref 
 
 INCDIRS =
 INCDIRS += .
@@ -27,6 +28,7 @@ STACK7_SRCS += stack7test.cpp
 STACK8_SRCS += stack8test.cpp
 MAX_SRCS += maxtest.cpp
 MAX3_SRCS += max3test.cpp
+REFNONREF_SRCS += refnonref.cpp
 
 SRCS_mainStack = $(BIT_SRCS)
 SRCS_stack3test = $(STACK3_SRCS)
@@ -36,6 +38,7 @@ SRCS_stack7test = $(STACK7_SRCS)
 SRCS_stack8test = $(STACK8_SRCS)
 SRCS_maxtest = $(MAX_SRCS)
 SRCS_max3test = $(MAX3_SRCS)
+SRCS_refnonref = $(REFNONREF_SRCS)
 
 include $(TOPDIR)/jhbuild/Make.Defaults
 include $(TOPDIR)/jhbuild/Make.Rules
