@@ -12,6 +12,10 @@ TARGET_PROGS += stack7test
 TARGET_PROGS += stack8test 
 TARGET_PROGS += stack9test 
 TARGET_PROGS += refnonref 
+TARGET_PROGS += lazy 
+TARGET_PROGS += deducetest1 
+TARGET_PROGS += accum1 
+TARGET_PROGS += accum2
 
 INCDIRS =
 INCDIRS += .
@@ -31,6 +35,10 @@ STACK9_SRCS += stack9test.cpp
 MAX_SRCS += maxtest.cpp
 MAX3_SRCS += max3test.cpp
 REFNONREF_SRCS += refnonref.cpp
+LAZY_SRCS += lazy.cpp
+DEDUCETEST1_SRCS += deducetest1.cpp
+ACCUM1_SRCS += accum1.cpp
+ACCUM2_SRCS += accum2.cpp
 
 SRCS_mainStack = $(BIT_SRCS)
 SRCS_stack3test = $(STACK3_SRCS)
@@ -42,6 +50,10 @@ SRCS_stack9test = $(STACK9_SRCS)
 SRCS_maxtest = $(MAX_SRCS)
 SRCS_max3test = $(MAX3_SRCS)
 SRCS_refnonref = $(REFNONREF_SRCS)
+SRCS_lazy = $(LAZY_SRCS)
+SRCS_deducetest1 = $(DEDUCETEST1_SRCS)
+SRCS_accum1 = $(ACCUM1_SRCS)
+SRCS_accum2 = $(ACCUM2_SRCS)
 
 include $(TOPDIR)/jhbuild/Make.Defaults
 include $(TOPDIR)/jhbuild/Make.Rules
