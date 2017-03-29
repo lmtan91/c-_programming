@@ -18,6 +18,8 @@ TARGET_PROGS += accum1
 TARGET_PROGS += accum2
 TARGET_PROGS += accum3
 TARGET_PROGS += accum4
+TARGET_PROGS += accum5
+TARGET_PROGS += accum6
 
 INCDIRS =
 INCDIRS += .
@@ -41,8 +43,10 @@ LAZY_SRCS += lazy.cpp
 DEDUCETEST1_SRCS += deducetest1.cpp
 ACCUM1_SRCS += accum1.cpp
 ACCUM2_SRCS += accum2.cpp
-ACCUM2_SRCS += accum3.cpp
+ACCUM3_SRCS += accum3.cpp
 ACCUM4_SRCS += accum4.cpp
+ACCUM5_SRCS += accum5.cpp
+ACCUM6_SRCS += accum6.cpp
 
 SRCS_mainStack = $(BIT_SRCS)
 SRCS_stack3test = $(STACK3_SRCS)
@@ -60,6 +64,8 @@ SRCS_accum1 = $(ACCUM1_SRCS)
 SRCS_accum2 = $(ACCUM2_SRCS)
 SRCS_accum3 = $(ACCUM3_SRCS)
 SRCS_accum4 = $(ACCUM4_SRCS)
+SRCS_accum5 = $(ACCUM5_SRCS)
+SRCS_accum6 = $(ACCUM6_SRCS)
 
 include $(TOPDIR)/jhbuild/Make.Defaults
 include $(TOPDIR)/jhbuild/Make.Rules
