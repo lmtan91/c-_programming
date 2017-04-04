@@ -23,6 +23,7 @@ TARGET_PROGS += accum6
 TARGET_PROGS += accum8
 TARGET_PROGS += accum0
 TARGET_PROGS += elementtype
+TARGET_PROGS += isclasst
 
 INCDIRS =
 INCDIRS += .
@@ -53,6 +54,7 @@ ACCUM6_SRCS += accum6.cpp
 ACCUM8_SRCS += accum8.cpp
 ACCUM0_SRCS += accum0.cpp
 ELEMENTTYPE_SRCS += elementtype.cpp
+ISCLASST_SRCS += isclasst.cpp
 
 SRCS_mainStack = $(BIT_SRCS)
 SRCS_stack3test = $(STACK3_SRCS)
@@ -75,6 +77,7 @@ SRCS_accum6 = $(ACCUM6_SRCS)
 SRCS_accum8 = $(ACCUM8_SRCS)
 SRCS_accum0 = $(ACCUM0_SRCS)
 SRCS_elementtype = $(ELEMENTTYPE_SRCS)
+SRCS_isclasst = $(ISCLASST_SRCS)
 
 include $(TOPDIR)/jhbuild/Make.Defaults
 include $(TOPDIR)/jhbuild/Make.Rules
