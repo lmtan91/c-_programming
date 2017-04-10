@@ -25,6 +25,8 @@ TARGET_PROGS += accum0
 TARGET_PROGS += elementtype
 TARGET_PROGS += isclasst
 TARGET_PROGS += namedtmpl
+TARGET_PROGS += ebco1
+TARGET_PROGS += ebco2
 
 INCDIRS =
 INCDIRS += .
@@ -57,6 +59,8 @@ ACCUM0_SRCS += accum0.cpp
 ELEMENTTYPE_SRCS += elementtype.cpp
 ISCLASST_SRCS += isclasst.cpp
 NAMEDTMPL_SRCS += namedtmpl.cpp
+EBCO1_SRCS += ebco1.cpp
+EBCO2_SRCS += ebco2.cpp
 
 SRCS_mainStack = $(BIT_SRCS)
 SRCS_stack3test = $(STACK3_SRCS)
@@ -81,6 +85,8 @@ SRCS_accum0 = $(ACCUM0_SRCS)
 SRCS_elementtype = $(ELEMENTTYPE_SRCS)
 SRCS_isclasst = $(ISCLASST_SRCS)
 SRCS_namedtmpl = $(NAMEDTMPL_SRCS)
+SRCS_ebco1 = $(EBCO1_SRCS)
+SRCS_ebco2 = $(EBCO2_SRCS)
 
 include $(TOPDIR)/jhbuild/Make.Defaults
 include $(TOPDIR)/jhbuild/Make.Rules
