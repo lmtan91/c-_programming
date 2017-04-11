@@ -31,6 +31,7 @@ TARGET_PROGS += pow3
 TARGET_PROGS += pow3b
 TARGET_PROGS += funcptr
 TARGET_PROGS += functor1
+TARGET_PROGS += funcwrap
 
 INCDIRS =
 INCDIRS += .
@@ -69,6 +70,7 @@ POW3_SRCS += pow3.cpp
 POW3B_SRCS += pow3b.cpp
 FUNCPTR_SRCS += funcptr.cpp
 FUNCTOR1_SRCS += functor1.cpp
+FUNCWRAP_SRCS += funcwrap.cpp
 
 SRCS_mainStack = $(BIT_SRCS)
 SRCS_stack3test = $(STACK3_SRCS)
@@ -99,6 +101,7 @@ SRCS_pow3 = $(POW3_SRCS)
 SRCS_pow3b = $(POW3B_SRCS)
 SRCS_funcptr = $(FUNCPTR_SRCS)
 SRCS_functor1 = $(FUNCTOR1_SRCS)
+SRCS_funcwrap = $(FUNCWRAP_SRCS)
 
 include $(TOPDIR)/jhbuild/Make.Defaults
 include $(TOPDIR)/jhbuild/Make.Rules
