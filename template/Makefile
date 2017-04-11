@@ -27,6 +27,7 @@ TARGET_PROGS += isclasst
 TARGET_PROGS += namedtmpl
 TARGET_PROGS += ebco1
 TARGET_PROGS += ebco2
+TARGET_PROGS += pow3
 
 INCDIRS =
 INCDIRS += .
@@ -61,6 +62,7 @@ ISCLASST_SRCS += isclasst.cpp
 NAMEDTMPL_SRCS += namedtmpl.cpp
 EBCO1_SRCS += ebco1.cpp
 EBCO2_SRCS += ebco2.cpp
+POW3_SRCS += pow3.cpp
 
 SRCS_mainStack = $(BIT_SRCS)
 SRCS_stack3test = $(STACK3_SRCS)
@@ -87,6 +89,7 @@ SRCS_isclasst = $(ISCLASST_SRCS)
 SRCS_namedtmpl = $(NAMEDTMPL_SRCS)
 SRCS_ebco1 = $(EBCO1_SRCS)
 SRCS_ebco2 = $(EBCO2_SRCS)
+SRCS_pow3 = $(POW3_SRCS)
 
 include $(TOPDIR)/jhbuild/Make.Defaults
 include $(TOPDIR)/jhbuild/Make.Rules
