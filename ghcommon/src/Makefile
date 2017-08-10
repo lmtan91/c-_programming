@@ -32,7 +32,7 @@ CFLAGS_libjhcomserver =
 SRCS_libjhcomclient = ComponentManagerClient.cpp ComponentManagerUtils.cpp
 CFLAGS_libjhcomclient =
 
-include $(TOPDIR)/jhbuild/Make.Defaults
-include $(TOPDIR)/jhbuild/Make.Rules
+include $(TOPDIR)/build/Make.Defaults
+include $(TOPDIR)/build/Make.Rules
 
 
