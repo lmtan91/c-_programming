@@ -8,7 +8,14 @@
 #include <pthread.h>
 
 #include "Thread.h"
+#include "gh_memory.h"
 #include "GlobalConstructor.h"
+#include "Mutex.h"
+
+pthread_key_t Thread::mThreadKey;
+bool Thread::mInited = false;
+
+pthread_mutex_t Mutex::mCriticalSection;
 
 GLOBAL_CONSTRUCT( &Thread::Init );
 
@@ -72,8 +79,69 @@ void Thread::Init()
       mInited = true;
 
       new Thread( pthread_self(), "main" );
-
+      Mutex::Init();
    }
+}
+
+void Thread::Destroy()
+{
+   mInited = false;
+
+   Mutex::Destroy();
+   //TOTO
+   //TimerManager::destroyManager();
+}
+
+void Thread::thread_key_destructor( void *arg )
+{
+   Thread *t = reinterpret_cast<Thread*>( arg );
+   if ( t->mSystemThread )
+   {
+      delete t;
+   }
+}
+
+Thread *Thread::GetCurrent()
+{
+   Thread *t = reinterpret_cast<Thread*>( pthread_getspecific( mThreadKey ) );
+   if ( t == NULL )
+   {
+      t = gh_new Thread( pthread_self(), NULL );
+   }
+
+   return t;
+}
+
+bool Thread::operator==( const Thread &t )
+{
+   return mThread == t.mThread;
+}
+
+int Thread::Join()
+{
+   int ret = 0;
+
+   if ( !mJoined )
+   {
+      if ( *this == *GetCurrent() )
+      {
+         printf("Thread %s attempting to join self: THIS WOULD DEADLOCK\n", GetName());
+         return -1;
+      }
+
+      ret = pthread_join( mThread, NULL );
+      if ( ret == 0 )
+         mJoined = true;
+      else
+         printf("pthread_join(%s) FAILED with error %d\n", GetName(), ret);
+   }
+
+   return ret;
+}
+
+void Thread::Exit()
+{
+   pthread_exit( NULL );
 }
 
 int32_t Thread::Start()
@@ -84,8 +152,8 @@ int32_t Thread::Start()
 
    prio.sched_priority = sched_get_priority_max( SCHED_RR );
 
-   // TODO
-   //printf("Creating Thread %s\n", GetName());
+   //TODO
+   printf("Creating Thread %s\n", GetName());
 
    pthread_attr_init( &attrs );
 
@@ -98,8 +166,10 @@ int32_t Thread::Start()
    rc = pthread_create( &mThread, &attrs, start_thread, (void *)this );
    if ( rc != 0 )
    {
-
+      printf("Error from pthread_create() is [%d]\n", rc);
    }
+   printf("Thread create %d\n", rc);
+
    /*
     * Destroying the attributes previously allocated by pthread_attr_init;
     * if not destroyed may result in a memory leak
@@ -112,6 +182,19 @@ int32_t Thread::Start()
 void Thread::Stop()
 {
    OnStop();
+}
+
+static const char gUnknownThread[] = "Unknown";
+
+const char *GetThreadName()
+{
+   Thread *t = Thread::GetCurrent();
+
+   if ( t == NULL )
+   {
+      return gUnknownThread;
+   }
+   return t->GetName();
 }
 
 void Thread::OnStop()

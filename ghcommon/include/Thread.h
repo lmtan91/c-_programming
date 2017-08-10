@@ -10,6 +10,7 @@
 
 #include <stdlib.h>
 
+
 class Thread
 {
 public:
@@ -38,12 +39,28 @@ public:
    void Stop();
 
    /**
+    * Get a thread name
+    */
+   const char *GetName() { return mName; }
+
+   /**
     * Block the calling thread until this thread exits.
     * Unless the underlying join fails, in which case, it returns the
     * error code immediately, and proceeds, without waiting for the
     * thread to join.
     */
    int Join();
+
+   bool operator==( const Thread &t );
+
+   static void Exit();
+
+   /**
+    *
+    */
+   static void Destroy();
+
+   static Thread *GetCurrent();
 
    /**
     * Init the thread system. Called once at startup before any threads are
@@ -81,5 +98,11 @@ private:
    static void thread_key_destructor( void* arg );
 };
 
+
+__BEGIN_DECLS
+
+const char *GetThreadName();
+
+__END_DECLS
 
 #endif /* _GH_THREAD_H_ */
