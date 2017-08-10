@@ -1,0 +1,14 @@
+# -*- makefile -*-
+PLATFORM_CFLAGS += -DCDI_IOCTL_DEFINITIONS="\"ioctl_magic.h\""
+KERNELDIR = /usr/src/linux
+KERNINCDIR += $(shell ${CROSS_COMPILE}gcc -print-libgcc-file-name | xargs dirname)/include
+ifndef BIN_ARCH
+	BIN_ARCH=
+endif
+
+# Enable PIC
+ifndef JH_NO_PIC
+PLATFORM_CFLAGS += -fPIC
+endif
+
+CONFIG_GLIBC=yes
