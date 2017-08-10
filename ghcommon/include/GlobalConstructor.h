@@ -11,7 +11,7 @@
 class GlobalConstructor
 {
 public:
-   typedef void (*GlobalConstructorFunc);
+   typedef void (*GlobalConstructorFunc)();
 
    GlobalConstructor(GlobalConstructorFunc init) : mFunc( NULL ) { init(); }
    GlobalConstructor(GlobalConstructorFunc init, GlobalConstructorFunc destroy)
