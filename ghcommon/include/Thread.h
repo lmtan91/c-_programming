@@ -98,6 +98,32 @@ private:
    static void thread_key_destructor( void* arg );
 };
 
+template<class T>
+class Runnable : public Thread
+{
+public:
+   typedef void (T::*thread_main_type)();
+
+   Runnable( const char *name, T *object, thread_main_type thread_main, bool hard_stop = false, int priority = 0 )
+   : Thread( name, priority ), mObject( object ), mFunc( thread_main ), mStop( false ), mHardStop( hard_stop )
+   {
+      if ( hard_stop == true )
+      {
+         abort();
+      }
+   }
+
+   bool CheckStop() { return mStop; }
+private:
+
+   void OnStart() { (mObject->*mFunc)(); }
+   void OnStop() { if ( mHardStop ) Thread::OnStop(); else mStop = true; }
+
+   T*                mObject;
+   thread_main_type  mFunc;
+   bool              mStop;
+   bool              mHardStop;
+};
 
 __BEGIN_DECLS
 
