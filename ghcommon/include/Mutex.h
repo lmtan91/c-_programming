@@ -83,16 +83,25 @@ public:
    /**
     * ExitCriticalSection
     */
-   static void ExitCriticalSection();
+   static void ExitCriticalSection()
+   {
+      pthread_mutex_unlock( &mCriticalSection );
+   }
 
    /**
     * EnterCriticalSection
     */
-   static void EnterCriticalSection();
+   static void EnterCriticalSection()
+   {
+      pthread_mutex_lock( &mCriticalSection );
+   }
    /**
     * Destroy
     */
-   static void Destroy();
+   static void Destroy()
+   {
+      pthread_mutex_destroy( &mCriticalSection );
+   }
 private:
    /**
     * Create lock
